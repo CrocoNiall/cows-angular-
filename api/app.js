@@ -27,7 +27,7 @@ app.use(bodyParser.urlencoded({ extended: true}));
 
 // QUESTION 1
 var post1 = new Post({
-  userID: '12345',
+  userName: 'Niallio',
   postTitle: 'TestPost',
   postText: 'This is very interesting post'
 })

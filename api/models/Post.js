@@ -8,7 +8,7 @@ var postSchema = new mongoose.Schema({
   postTitle: {type: String, required: true},
   postText: {type: String, required: true},
   comments: [],
-  // linkes: [Users.schema]
+  likes: {type: Number, default: 0}
 })
 
 var Post = mongoose.model('Post', postSchema)
