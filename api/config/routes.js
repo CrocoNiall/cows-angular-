@@ -10,14 +10,20 @@ var postsController = require('../controllers/posts')
 router.route('/posts')
   .get(postsController.getAll)
 
-
 //DELETE
 router.route('/posts/:id')
   .delete(postsController.removePost)
 
+
+
+//UN_RESTFUL ROUTES
+
 //LIKE POST
 router.route('/posts/like/:id')
-  .get(postsController.likePost);
+  .post(postsController.likePost);
 
+//ADD COMMENT
+router.route('/posts/comment/:id')
+  .post(postsController.commentPost)
 
 module.exports = router; 

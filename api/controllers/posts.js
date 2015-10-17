@@ -39,6 +39,23 @@ function likePost(req, res) {
 //ADD COMMENT TO POST
 function commentPost(req, res){
   var id = req.params.id
+
+  var newComment = {
+    date: (new Date()).toString().split(' ').splice(1,3).join(' '),
+    time: (new Date()).toString().split(' ')[4],
+    text: req.body.comment
+  }
+
+  var post = Post.findById(id, function(err, post){
+    if(err) res.json({message: 'Could not find post b/c: ' + err})
+      post.comments.push(newComment)
+    // console.log(post)
+
+    post.save(function(error){
+      if (error) res.json({message: 'Could not add comment b/c: ' + error})
+    })
+    res.json(post)
+  })
 }
 
 //EXPORT MODULES
@@ -46,6 +63,7 @@ function commentPost(req, res){
 module.exports = {
   getAll: getAll,
   removePost: removePost,
-  likePost: likePost
+  likePost: likePost,
+  commentPost: commentPost
 
 }

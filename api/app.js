@@ -5,7 +5,7 @@ var cours         = require('cors')
 var server        = require('http').createServer(app);
 var port          = process.env.PORT || 3000
 var morgan        = require('morgan');
-var bodyParser     = require('body-parser');
+var bodyParser    = require('body-parser');
 
 
 //connect to db
@@ -16,14 +16,16 @@ var Post = require('./models/Post')
 //configure routes 
 var routes = require('./config/routes');
 
-app.use(routes);
+
 
 //configure logger
 app.use(morgan('dev'))
 
 //configure Parsers
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true}));
+app.use(bodyParser.urlencoded({ extended: true })); 
+
+app.use(routes);
 
 // QUESTION 1
 var post1 = new Post({
