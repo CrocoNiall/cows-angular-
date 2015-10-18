@@ -6,7 +6,7 @@ function getAll(req, res) {
   Post.find(function(error, post){
     if(error) res.json({message: 'could not find any posts'})
 
-      res.json({post: post});
+      res.json( post);
   });
 }
 

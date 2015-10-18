@@ -1,7 +1,7 @@
 var express       = require('express');
 var mongoose      = require('mongoose');
 var app           = express();
-var cours         = require('cors')
+var cors          = require('cors')
 var server        = require('http').createServer(app);
 var port          = process.env.PORT || 3000
 var morgan        = require('morgan');
@@ -16,7 +16,7 @@ var Post = require('./models/Post')
 //configure routes 
 var routes = require('./config/routes');
 
-
+app.use(cors());
 
 //configure logger
 app.use(morgan('dev'))

@@ -1,0 +1,27 @@
+body{
+  font-family: 'Candal', sans-serif;
+  width: 70%;
+  margin: 0 auto;
+  background-image: url('../images/grass.png');
+  background-repeat: repeat;
+
+}
+
+#innerContainer{
+  background-color: white;
+  border-left: solid black 5px;
+  border-right: solid black 5px;
+  border-top: solid black 5px;
+  height: 1000px;
+  padding: 20px;
+}
+
+#header{
+  background-color: green;
+  height: 200px;
+}
+
+#bodyContainer{
+
+
+}
