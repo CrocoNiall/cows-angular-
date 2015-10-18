@@ -1,10 +1,19 @@
 body{
   font-family: 'Candal', sans-serif;
-  width: 70%;
+  max-width: 1000px;
   margin: 0 auto;
-  background-image: url('../images/grass.png');
+  background-image: url('../images/grass2.png');
   background-repeat: repeat;
 
+}
+
+#cowImage{
+  float: right;
+  margin-right: 70px;
+}
+
+#h1Image{
+  width: 400px;
 }
 
 #innerContainer{
@@ -12,16 +21,71 @@ body{
   border-left: solid black 5px;
   border-right: solid black 5px;
   border-top: solid black 5px;
-  height: 1000px;
+  min-height: 1000px;
   padding: 20px;
 }
 
-#header{
-  background-color: green;
-  height: 200px;
+.header{
+  background-image: url('../images/fronthills2.png');
+  background-repeat: no-repeat;
+  background-position: bottom;
+  background-size: 100%;
+  background-color: white;
+  border: solid black 5px;
+  min-height: 300px;
+  padding: 20px;
+}
+
+.postLeft{
+  display: inline-block;
+  width: 80%;
+}
+
+.postRight{
+  display: inline-block;
+  vertical-align: top;
+  float: middle;
+  width: 15%;
+}
+
+.postCowImg{
+  margin-left: 20px;
 }
 
 #bodyContainer{
 
 
+}
+
+
+
+
+
+
+
+
+@import "compass/css3";
+
+.box {
+    position: relative;
+    margin: 0 auto 80px;
+    padding: 70px 0 40px;
+    max-width: 840px;
+    text-align: center;
+    background: #fff;
+}
+
+.box:after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 4px;
+    -webkit-border-radius: 50%;
+            border-radius: 50%;
+    -webkit-box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+       -moz-box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+    z-index: -1;
 }

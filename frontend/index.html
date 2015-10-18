@@ -18,14 +18,24 @@
 </head>
 
 <body ng-controller='postController as post'>
-  <div id='innerContainer'>
-    <div id='header'
-      <h1>We Love MadCows</h1>
+  <div id='innerContainer' class='header1'>
+    <div class='header'>
+      <img id='h1Image' src="./images/h1.png" alt="H1 image">
+      <img id='cowImage' src="./images/madCow.png" alt="Mad Cow Image">
     </div>
+
     <div id='bodyContainer'>
-      <ul>
-        <li ng-repeat='post in post.posts'>{{post.postText}}</li>
-      </ul>
+
+      <div ng-repeat='post in post.posts' class='post'>
+        <h1>{{ post.postTitle }}</h1>
+        <div class='postLeft'>
+          <p>{{ post.postText }}</p>
+        </div>
+        <div class='postRight'>
+          <img class='postCowImg' src="./images/madCow.png" alt="">
+        </div>
+
+      </div>
 
     </div>
   </div>
