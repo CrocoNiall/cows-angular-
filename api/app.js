@@ -35,6 +35,9 @@ var post1 = new Post({
   date: (new Date()).toString().split(' ').splice(1,3).join(' '),
   time: (new Date()).toString().split(' ')[4]
 })
+post1.comments.push('this is a comment')
+post1.comments.push('this is another comment')
+
 
 post1.save(function(err, post) {
   if (err) console.log(err)
@@ -48,6 +51,9 @@ var post2 = new Post({
   date: (new Date()).toString().split(' ').splice(1,3).join(' '),
   time: (new Date()).toString().split(' ')[4]
 })
+
+post2.comments.push('this is a comment')
+post2.comments.push('this is another comment')
 
 post2.save(function(err, post) {
   if (err) console.log(err)

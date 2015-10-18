@@ -7,6 +7,7 @@ function PostController($resource, $http){
   var self = this;
   self.posts = [];
   self.newPost = {};
+  self.comment = '';
 
   var Post = $resource('http://localhost:3000/posts/:id', {id: '@_id'}, 
   {  
@@ -14,11 +15,13 @@ function PostController($resource, $http){
     'query': { method: 'GET', isArray: true}
   });
 
-   self.posts = Post.query();
-
-
 
   this.IsVisible = false;
+
+  this.getContent = function(){
+    self.posts = Post.query();
+  }
+
   this.ShowHide = function () {
     this.IsVisible = this.IsVisible ? false : true;
     };
@@ -27,7 +30,16 @@ function PostController($resource, $http){
     return this.posts.length > 0 ? false : true;
   }
 
+  self.addComment = function(id){
+    $http
+      .post('http://localhost:3000/posts/comment/' + id, {comment: self.comment})
+      .then(function(){
+        self.comment = ''
+        self.getContent()
+      })
+    
 
+  }
 
   self.addPost = function(){
     
@@ -43,10 +55,6 @@ function PostController($resource, $http){
     self.newPost = {};
   }
 
-
-
-
-
-
+  this.getContent()
   
 }

@@ -21,8 +21,8 @@
 <body ng-controller='postController as post'>
   <div id='innerContainer' class='header1'>
     <div class='header'>
-      <img id='h1Image' src="./images/h1.png" alt="H1 image">
-      <img ng-class=("tossing")  id='cowImage' src="./images/madCow.png" alt="Mad Cow Image">
+      <img ng-class=("tossing") id='h1Image' src="./images/h1.png" alt="H1 image">
+      <img ng-class=("tossing") id='cowImage' src="./images/madCow.png" alt="Mad Cow Image">
     </div>
 
     <div id='bodyContainer'>
@@ -46,6 +46,8 @@
 
       <img ng-class=("bigEntrance") id='loadingBar' ng-show='post.postsEmpty()' src="./images/ajax-loader.gif" alt="Loading Bar">
 
+
+
       <div ng-class=("bigEntrance") ng-repeat='post in post.posts.slice().reverse() | filter:search:strict' class='post'>
         <h1>{{ post.postTitle }}</h1>
         <h3>Author: <i>{{post.userName}}</i></h3>
@@ -55,6 +57,18 @@
         <div class='postRight'>
           <img class='postCowImg' src="./images/madCow.png" alt="">
         </div>
+        
+         <div class='commentsContainer'>
+          <ul>
+            <li ng-repeat='comment in post.comments'>{{comment}}</li>
+
+          </ul>
+          <form ng-controller='postController as posts' ng-submit='posts.addComment(post._id)'>
+            <lable for='comment'>Comment: </lable>
+            <input type="text" name='comment' ng-model='posts.comment'>
+            <input type="submit" value="Add Comment">
+          </form>
+         </div>
 
       </div>
 
