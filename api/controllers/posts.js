@@ -6,7 +6,12 @@ function getAll(req, res) {
   Post.find(function(error, post){
     if(error) res.json({message: 'could not find any posts'})
 
+      //FAKE TIMEOUT FOR JSON RESPONSE
+      setTimeout(function(){
       res.json( post);
+
+      },5000);
+        
   });
 }
 
@@ -36,6 +41,22 @@ function likePost(req, res) {
   })
 }
 
+
+//CREATE POST
+function createPost(request, response) {
+  var newPost = request.body
+  newPost.date = (new Date()).toString().split(' ').splice(1,3).join(' ')
+  newPost.time = (new Date()).toString().split(' ')[4]
+
+  var post = new Post(newPost);
+  post.save(function(error) {
+    if(error) response.json({messsage: 'Could not ceate post b/c:' + error});
+
+    response.json({post: post});
+  });
+}
+
+
 //ADD COMMENT TO POST
 function commentPost(req, res){
   var id = req.params.id
@@ -63,6 +84,7 @@ function commentPost(req, res){
 module.exports = {
   getAll: getAll,
   removePost: removePost,
+  createPost: createPost,
   likePost: likePost,
   commentPost: commentPost
 

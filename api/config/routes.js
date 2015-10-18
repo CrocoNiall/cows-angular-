@@ -9,6 +9,7 @@ var postsController = require('../controllers/posts')
 //GET ALL
 router.route('/posts')
   .get(postsController.getAll)
+  .post(postsController.createPost)
 
 //DELETE
 router.route('/posts/:id')

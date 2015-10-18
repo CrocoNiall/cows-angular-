@@ -7,6 +7,8 @@ var postSchema = new mongoose.Schema({
   userName: {type: String, required: true},
   postTitle: {type: String, required: true},
   postText: {type: String, required: true},
+  date: {type: String},
+  time: {type: String},
   comments: [],
   likes: {type: Number, default: 0}
 })

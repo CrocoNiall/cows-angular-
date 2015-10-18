@@ -15,19 +15,40 @@
 
   <!-- Style -->
   <link rel="stylesheet" type="text/css" href="./css/style.css">
+  <link rel="stylesheet" type="text/css" href="./css/animations.css">
 </head>
 
 <body ng-controller='postController as post'>
   <div id='innerContainer' class='header1'>
     <div class='header'>
       <img id='h1Image' src="./images/h1.png" alt="H1 image">
-      <img id='cowImage' src="./images/madCow.png" alt="Mad Cow Image">
+      <img ng-class=("tossing")  id='cowImage' src="./images/madCow.png" alt="Mad Cow Image">
     </div>
 
     <div id='bodyContainer'>
+      <h3>Search: <input ng-model="search.$"></h3> <br>
 
-      <div ng-repeat='post in post.posts' class='post'>
+      <input type="button" value="Create a Post!!!" ng-click="post.ShowHide()" />
+
+        <div ng-show="post.IsVisible">
+
+          <form ng-class=("bigEntrance") id='newPostForm' ng-submit='post.addPost()'>
+            <h3>Create a Post!!!</h3>
+            <lable for='name'>Your Name: </lable>
+            <input name='name' type="text" ng-model='post.newPost.userName'><br>
+            <lable for='title'>Post Title: </lable>
+            <input name='title' type="text" ng-model='post.newPost.postTitle'><br>
+            <label for='text'>Post Text: </label>
+            <input name='text' class='set-width' type="text" ng-model='post.newPost.postText'><br>
+            <input type="submit" value='Post!'>
+          </form>
+        </div>
+
+      <img ng-class=("bigEntrance") id='loadingBar' ng-show='post.postsEmpty()' src="./images/ajax-loader.gif" alt="Loading Bar">
+
+      <div ng-class=("bigEntrance") ng-repeat='post in post.posts.slice().reverse() | filter:search:strict' class='post'>
         <h1>{{ post.postTitle }}</h1>
+        <h3>Author: <i>{{post.userName}}</i></h3>
         <div class='postLeft'>
           <p>{{ post.postText }}</p>
         </div>
